@@ -12,7 +12,9 @@ import GathererLatencyGrid from './GathererLatencyGrid';
 import GathererLatencyChart from './GathererLatencyChart';
 
 const mdTheme = createTheme();
-
+const handleClick = (event: React.MouseEvent<HTMLButtonElement>, ) => {
+    alert();
+  };
 export default function Dashboard() {
     return (
         <React.Fragment>

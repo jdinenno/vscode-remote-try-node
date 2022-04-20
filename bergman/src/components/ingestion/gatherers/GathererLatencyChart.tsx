@@ -30,9 +30,12 @@ const data = [
   createData('Refresh I', 2300, 2300, 2300, 2300, 1300, 230, 230, 230, 523),
 ];
 
+
 export default function GathererLatencyChart() {
   const theme = useTheme();
-
+  const clickMe = (payload: any, value: number) => {
+    alert( JSON.stringify(payload));
+  }
   return (
     <React.Fragment>
       <Title>Gatherer Refresh Latency</Title>
@@ -60,8 +63,8 @@ export default function GathererLatencyChart() {
           <Legend />
           <Bar dataKey="browser_load" stackId="a" fill="orange" stroke={theme.palette.primary.main} />
           <Bar dataKey="logon" stackId="a" fill="#8884d8" stroke={theme.palette.primary.main} />
-          <Bar dataKey="acctsummary" stackId="a" fill="#82ca9d" stroke={theme.palette.primary.main} />
-          <Bar dataKey="acctdetail" stackId="a" fill="blue" stroke={theme.palette.primary.main} />
+          <Bar onClick={(d,i)=>alert(`purple ${i}`)} dataKey="acctsummary" stackId="a" fill="#82ca9d" stroke={theme.palette.primary.main} />
+          <Bar onClick={(payload, index) => {clickMe(payload, index); }} dataKey="acctdetail" stackId="a" fill="blue" stroke={theme.palette.primary.main} />
           <Bar dataKey="cupalogwrite" stackId="a" fill="purple" stroke={theme.palette.primary.main} />
           <Bar dataKey="summarylogwrite" stackId="a" fill="teal" stroke={theme.palette.primary.main} />
           <Bar dataKey="tracelogwrite" stackId="a" fill="green" stroke={theme.palette.primary.main} />

@@ -4,17 +4,23 @@ import IconButton from '@mui/material/IconButton';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import SearchIcon from '@mui/icons-material/Search';
-import Chart from '../../Chart';
 import GathererLatencyChart from '../gatherers/GathererLatencyChart';
 import CobrandComboBox from '../../CobrandCombo';
 import SubbrandComboBox from '../../SubbrandCombo';
 import SiteComboBox from '../../SiteCombo';
 import GathererLatencyGrid from '../gatherers/GathererLatencyGrid';
+import { DataGrid } from '@mui/x-data-grid';
+import { useDemoData } from '@mui/x-data-grid-generator';
 
 
 const mdTheme = createTheme();
 
 export default function DashboardBulk() {
+    const { data, loading } = useDemoData({
+        dataSet: 'Commodity',
+        rowLength: 100,
+        maxColumns: 10,
+      });
     return (
         <React.Fragment>
             <ThemeProvider theme={mdTheme}>
@@ -31,9 +37,25 @@ export default function DashboardBulk() {
                     </Grid>
                     {/* Gatherer Latency Chart */}
                     <Grid item xs={12}>
-                        <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column', height: 440 }}>
+                        <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column', height: 840 }}>
                             Bulk
-                            <Chart />
+                            <div style={{ height: '100%', width: '100%' }}>
+                                <DataGrid
+                                    {...data}
+                                    loading={loading}
+                                    initialState={{
+                                    ...data.initialState,
+                                    filter: {
+                                        filterModel: {
+                                        items: [{ columnField: 'quantity', operatorValue: '>', value: 10000 }],
+                                        },
+                                    },
+                                    sorting: {
+                                        sortModel: [{ field: 'desk', sort: 'asc' }],
+                                    },
+                                    }}
+                                />
+                                </div>
                         </Paper>
                     </Grid>
                     <Grid item xs={12}>

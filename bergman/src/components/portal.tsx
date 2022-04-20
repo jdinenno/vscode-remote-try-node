@@ -22,7 +22,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import { Api, Code, CurrencyExchange, ErrorOutline, LibraryBooks } from '@mui/icons-material';
 import ListItemText from '@mui/material/ListItemText';
 import DashboardBulk from './ingestion/bulk/dashboard_bulk';
-import { Link, NavLink, Route, Routes } from 'react-router-dom';
+import DashboardBulkStatus from './ingestion/bulk/dashboard_bulkstatus';
+import { Link, Route, Routes } from 'react-router-dom';
 import Placeholder from './ingestion/Placeholder';
 import BulkMenu from './ingestion/bulk/BulkMenu';
 
@@ -155,28 +156,28 @@ function PortalContent() {
                 sx={{ width: 350 }}
                 aria-labelledby="basic-button-ingestion"
               >
-                <Link to="/Ingestion/Gatherer" >
-                <MenuItem onClick={handleClose}>
                 
+                <MenuItem onClick={handleClose}>
                   <ListItemIcon>
                     <CurrencyExchange fontSize="small" />
                   </ListItemIcon>
-                  <ListItemText sx={{ width: 100 }}>Gatherers</ListItemText>
+                  <ListItemText sx={{ width: 100 }}><Link style={{ textDecoration: 'none'}} to="/Ingestion/Gatherer" >Gatherers</Link></ListItemText>
                   <Typography variant="body2" color="text.secondary">
                     Ctrl+G
                   </Typography>
-                 
                 </MenuItem>
-                </Link>
+    
+                
                 <MenuItem onClick={handleClose}>
                   <ListItemIcon>
                     <LibraryBooks fontSize="small" />
                   </ListItemIcon>
-                  <ListItemText sx={{ width: 100 }}><NavLink to="/Ingestion/Bulk">Bulk</NavLink></ListItemText>
+                  <ListItemText sx={{ width: 100 }}><Link style={{ textDecoration: 'none'}} to="/Ingestion/Bulk" >Bulk</Link></ListItemText>
                   <Typography variant="body2" color="text.secondary">
                     Ctrl+B
                   </Typography>
                 </MenuItem>
+                
                 <MenuItem onClick={handleClose}>
                   <ListItemIcon>
                     <Api fontSize="small" />
@@ -219,7 +220,7 @@ function PortalContent() {
                   <ListItemIcon>
                     <Code fontSize="small" />
                   </ListItemIcon>
-                  <ListItemText sx={{ width: 100 }}><NavLink to="/config/cobrand">Cobrand</NavLink></ListItemText>
+                  <ListItemText sx={{ width: 100 }}><Link style={{ textDecoration: 'none'}} to="/config/cobrand">Cobrand</Link></ListItemText>
                   <Typography variant="body2" color="text.secondary">
                     Ctrl+G
                   </Typography>
@@ -228,7 +229,7 @@ function PortalContent() {
                   <ListItemIcon>
                     <Code fontSize="small" />
                   </ListItemIcon>
-                  <ListItemText sx={{ width: 100 }}><NavLink to="/config/source">Source</NavLink></ListItemText>
+                  <ListItemText sx={{ width: 100 }}><Link style={{ textDecoration: 'none'}} to="/config/source">Source</Link></ListItemText>
                   <Typography variant="body2" color="text.secondary">
                     Ctrl+G
                   </Typography>
@@ -300,7 +301,7 @@ function PortalContent() {
           <Routes>
             <Route path="/" element={<Placeholder />} />
             <Route path="/Ingestion/Gatherer" element={<GathererMenu />} />
-            <Route path="/Ingestion/Bulk" element={<BulkMenu />} />
+            <Route path="/Ingestion/Bulk/*"  element={<BulkMenu />} />
             <Route path="/config/cobrand" element={<Placeholder />} />
             <Route path="/config/source" element={<Placeholder />} />
           </Routes>
@@ -324,6 +325,7 @@ function PortalContent() {
               <Route path="/" element={<Placeholder />} />
               <Route path="/Ingestion/Gatherer" element={<Dashboard />} />
               <Route path="/Ingestion/Bulk" element={<DashboardBulk />} />
+              <Route path="/Ingestion/Bulk/Status" element={<DashboardBulkStatus />} />
             </Routes>
 
             <Copyright sx={{ pt: 4 }} />
