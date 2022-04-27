@@ -13,16 +13,14 @@ import Title from '../../Title';
 import { Link } from 'react-router-dom';
 
 export default function BulkMenu() {
-
-
   return (
     <React.Fragment>
       <List component="nav">
-      <ListItemButton>
+        <ListItemButton>
           <Title>Bulk Files</Title>
         </ListItemButton>
         <Divider sx={{ my: 1 }} />
-        <Link style={{ textDecoration: 'none'}} to="/Ingestion/Bulk/Status">
+        <Link style={{ textDecoration: 'none' }} to="/Ingestion/Bulk/Status">
           <ListItemButton>
             <ListItemIcon>
               <DashboardIcon />
@@ -30,12 +28,6 @@ export default function BulkMenu() {
             <ListItemText primary="Pipeline" />
           </ListItemButton>
         </Link>
-        <ListItemButton>
-          <ListItemIcon>
-            <DashboardIcon />
-          </ListItemIcon>
-          <ListItemText primary="Status" />
-        </ListItemButton>
         <ListItemButton>
           <ListItemIcon>
             <ContactPhone />
@@ -48,7 +40,7 @@ export default function BulkMenu() {
           </ListItemIcon>
           <ListItemText primary="SLA Status" />
         </ListItemButton>
-        
+
         <Divider sx={{ my: 1 }} />
 
         <ListSubheader component="div" inset>
